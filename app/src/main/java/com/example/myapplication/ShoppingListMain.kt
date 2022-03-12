@@ -46,16 +46,6 @@ fun ShoppingListMain() {
 }
 
 @Composable
-fun MainScreen( navControl: NavHostController, userVM: UserViewModel, db: FirebaseFirestore, fAuth: FirebaseAuth ) {
-
-    Scaffold(
-        content = { Content(navControl, userVM, db, fAuth) },
-        bottomBar = { BottomBar(navControl) }
-    )
-
-}
-
-@Composable
 fun LoginScreen(navControl: NavHostController, fAuth: FirebaseAuth, userVM: UserViewModel) {
 
     Scaffold(
@@ -182,7 +172,17 @@ fun RegisterView(  fAuth: FirebaseAuth, userVM: UserViewModel ) {
     }
 }
 
-@Composable //Content for the logged in scaffold
+@Composable
+fun MainScreen( navControl: NavHostController, userVM: UserViewModel, db: FirebaseFirestore, fAuth: FirebaseAuth ) {
+
+    Scaffold(
+        content = { Content(navControl, userVM, db, fAuth) },
+        bottomBar = { BottomBar(navControl) }
+    )
+
+}
+
+@Composable
 fun Content(navControl: NavHostController, userVM: UserViewModel, db: FirebaseFirestore, fAuth: FirebaseAuth){
 
     NavHost( navController = navControl, startDestination = "view 1") {
